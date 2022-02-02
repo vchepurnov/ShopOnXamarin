@@ -1,2 +1,2 @@
 # ShopOnXamarin
-API.NET + Xamarin
+APS.NET + Xamarin
