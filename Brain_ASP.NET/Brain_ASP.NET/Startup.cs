@@ -1,17 +1,10 @@
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.HttpsPolicy;
-using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using Microsoft.Extensions.Logging;
 using Microsoft.IdentityModel.Tokens;
 using Microsoft.OpenApi.Models;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 
 namespace Brain_ASP.NET
 {
@@ -29,7 +22,7 @@ namespace Brain_ASP.NET
         {
             services.AddControllers();
 
-            #region Настройка аунтификации
+            #region Настройка аунтификации и авторизации
             services.AddAuthentication("Bearer")
             .AddJwtBearer("Bearer", options =>
             {
@@ -40,9 +33,17 @@ namespace Brain_ASP.NET
                     ValidateAudience = false
                 };
             });
+            services.AddAuthorization(options =>
+            {
+                options.AddPolicy("ApiScope", policy =>
+                {
+                    policy.RequireAuthenticatedUser();
+                    policy.RequireClaim("scope", "identity");
+                });
+            });
             #endregion
 
-            #region Настройка Swagger
+            #region Добвление Swagger
             services.AddSwaggerGen(c =>
             {
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "Brain_ASP.NET", Version = "v1" });
@@ -64,12 +65,13 @@ namespace Brain_ASP.NET
 
             app.UseRouting();
 
-            app.UseAuthorization();
+            app.UseAuthentication();
             app.UseAuthorization();
 
             app.UseEndpoints(endpoints =>
             {
-                endpoints.MapControllers();
+                endpoints.MapControllers()
+                    .RequireAuthorization("ApiScope");
             });
         }
     }
