@@ -1,4 +1,8 @@
-﻿namespace Identity_Server.Models
+﻿using System;
+using System.Collections.Generic;
+using System.Text;
+
+namespace Models.Identity
 {
     public class UserRole
     {
