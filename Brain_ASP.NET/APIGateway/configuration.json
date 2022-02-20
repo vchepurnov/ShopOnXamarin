@@ -12,10 +12,12 @@
         }
       ],
       "DownstreamPathTemplate": "/api/Authenticate/{everything}",
-      "DownstreamScheme": "http",
+      "DownstreamScheme": "https",
       "UpstreamHttpMethod": [ "POST" ],
       "UpstreamPathTemplate": "/api/Authenticate/{everything}"
     }
   ],
-  "GlobalConfiguration": {}
+  "GlobalConfiguration": {
+    "BaseUrl": "http://localhost:44392"
+  }
 }

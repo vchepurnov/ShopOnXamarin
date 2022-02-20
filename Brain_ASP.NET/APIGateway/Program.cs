@@ -16,7 +16,7 @@ namespace APIGateway
     {
         public static void Main(string[] args)
         {
-            BuildWebHost(args).Run();
+            CreateHostBuilder(args).Build().Run();
         }
 
         public static IHostBuilder CreateHostBuilder(string[] args) =>
@@ -24,6 +24,7 @@ namespace APIGateway
                 .ConfigureWebHostDefaults(webBuilder =>
                 {
                     webBuilder.UseStartup<Startup>();
+                    webBuilder.ConfigureAppConfiguration(c => c.AddJsonFile("configuration.json"));
                 });
 
         public static IWebHost BuildWebHost(string[] args)
