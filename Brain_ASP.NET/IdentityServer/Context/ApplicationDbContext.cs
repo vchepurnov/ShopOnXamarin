@@ -1,6 +1,6 @@
-﻿using Identity_Server.IdentityAuth;
-using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
+﻿using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
+using Models.Identity;
 
 namespace Identity_Server.Context
 {

@@ -1,0 +1,21 @@
+{
+  "ReRoutes": [
+    {
+      "AuthenticationOptions": {
+        "AuthenticationProviderKey": "IdentityApiKey",
+        "AllowedScopes": []
+      },
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "localhost",
+          "Port": "5003"
+        }
+      ],
+      "DownstreamPathTemplate": "/api/Authenticate/{everything}",
+      "DownstreamScheme": "http",
+      "UpstreamHttpMethod": [ "POST" ],
+      "UpstreamPathTemplate": "/api/Authenticate/{everything}"
+    }
+  ],
+  "GlobalConfiguration": {}
+}

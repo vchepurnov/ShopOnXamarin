@@ -1,11 +1,10 @@
-﻿using Identity_Server.IdentityAuth;
-using Identity_Server.Models;
-using Microsoft.AspNetCore.Authorization;
+﻿using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using Microsoft.IdentityModel.Tokens;
+using Models.Identity;
 using System;
 using System.Collections.Generic;
 using System.IdentityModel.Tokens.Jwt;
@@ -54,7 +53,7 @@ namespace Identity_Server.Controller
                 var errors = new List<string>();
                 foreach (var error in result.Errors)
                     errors.Add(error.Description);
-                return StatusCode(500, new { Status = "Error", Message = $"User creation failes! {string.Join(", ", errors)}" });
+                return StatusCode(400, new { Status = "Error", Message = $"User creation failes! {string.Join(", ", errors)}" });
             }
             return Ok(new { Status = "Success", Message = "User created successfully" });
         }
@@ -83,7 +82,7 @@ namespace Identity_Server.Controller
                 var errors = new List<string>();
                 foreach (var error in result.Errors)
                     errors.Add(error.Description);
-                return StatusCode(500, new { Status = "Error", Message = $"User creation failes! {string.Join(", ", errors)}" });
+                return StatusCode(400, new { Status = "Error", Message = $"User creation failes! {string.Join(", ", errors)}" });
             }
             if (await _roleManager.RoleExistsAsync(UserRole.User))
                 await _roleManager.CreateAsync(new IdentityRole(UserRole.User));
@@ -145,7 +144,7 @@ namespace Identity_Server.Controller
         
         [HttpPost]
         [Route("change-password")]
-        public async Task<ActionResult> ChangePassword([FromBody]ChangePassword model)
+        public async Task<ActionResult> ChangePassword([FromBody]ChangePasswordModel model)
         {
             var user = await _userManager.FindByNameAsync(model.Name);
             if (user == null)
@@ -160,7 +159,7 @@ namespace Identity_Server.Controller
                 var errors = new List<string>();
                 foreach (var error in result.Errors)
                     errors.Add(error.Description);
-                return StatusCode(500, new { Status = "Error", Message = $"User creation failes! {string.Join(", ", errors)}" });
+                return StatusCode(400, new { Status = "Error", Message = $"Password change failes! {string.Join(", ", errors)}" });
             }
 
             return Ok(result);
@@ -187,7 +186,7 @@ namespace Identity_Server.Controller
                 var errors = new List<string>();
                 foreach (var error in result.Errors)
                     errors.Add(error.Description);
-                return StatusCode(500, new { Status = "Error", Message = $"Password reset failes! {string.Join(", ", errors)}" });
+                return StatusCode(400, new { Status = "Error", Message = $"Password reset failes! {string.Join(", ", errors)}" });
             }
             return Ok(result);
         }
@@ -227,7 +226,7 @@ namespace Identity_Server.Controller
                 var errors = new List<string>();
                 foreach (var error in result.Errors)
                     errors.Add(error.Description);
-                return StatusCode(500, new { Status = "Error", Message = $"Password reset failes! {string.Join(", ", errors)}" });
+                return StatusCode(400, new { Status = "Error", Message = $"Password reset failes! {string.Join(", ", errors)}" });
             }
             return Ok(result);
         }
