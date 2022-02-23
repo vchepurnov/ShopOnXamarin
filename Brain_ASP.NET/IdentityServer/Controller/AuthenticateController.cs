@@ -4,6 +4,7 @@ using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using Microsoft.IdentityModel.Tokens;
+using Models;
 using Models.Identity;
 using System;
 using System.Collections.Generic;
@@ -44,7 +45,8 @@ namespace Identity_Server.Controller
             {
                 Email = model.Email,
                 SecurityStamp = Guid.NewGuid().ToString(),
-                UserName = model.Username
+                UserName = model.Username,
+                ShoppingCart = new ShoppingCart()
             };
 
             var result = await _userManager.CreateAsync(user, model.Password);

@@ -1,8 +1,11 @@
-﻿namespace Models
+﻿using System.Collections.ObjectModel;
+
+namespace Models
 {
-    class Category
+    public class Category
     {
         public int Id { get; set; }
         public string Name { get; set; }
+        public ObservableCollection<TypeProduct> TypeProducts { get; set; }
     }
 }

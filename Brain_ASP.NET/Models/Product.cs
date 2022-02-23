@@ -1,11 +1,15 @@
-﻿namespace Models
+﻿using System.Collections.ObjectModel;
+
+namespace Models
 {
-    class Product
+    public class Product
     {
         public int Id { get; set; }
         public string Name { get; set; }
         public int Price { get; set; }
         public int TypeProductId { get; set; }
         public TypeProduct TypeProduct { get; set; }
+        public ObservableCollection<ShoppingCart> ShoppingCarts { get; set; }
+        public ObservableCollection<Order> Orders { get; set; }
     }
 }

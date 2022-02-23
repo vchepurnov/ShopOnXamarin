@@ -2,7 +2,7 @@
 
 namespace Models
 {
-    class Table
+    public class Table
     {
         public int Id { get; set; }
         public ObservableCollection<Seat> Seats { get; set; }
