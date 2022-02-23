@@ -124,6 +124,9 @@ namespace Identity_Server
             .AllowAnyMethod()
             .AllowAnyHeader());
 
+            app.UseAuthentication();
+            app.UseAuthorization();
+
             app.UseEndpoints(endpoints =>
             {
                 if(env.IsDevelopment())
