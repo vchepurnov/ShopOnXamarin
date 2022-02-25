@@ -76,9 +76,11 @@ namespace Identity_Server.Controller
         // POST: api/Products
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPost]
+
         public async Task<ActionResult<Product>> PostProduct(AddProductModel product)
         {
             _context.Product.Add(new Product() {Name = product.Name, Price = product.Price, TypeProductId = product.TypeProductId });
+
             await _context.SaveChangesAsync();
 
             return CreatedAtAction("GetProduct", new { id = product.Id }, product);

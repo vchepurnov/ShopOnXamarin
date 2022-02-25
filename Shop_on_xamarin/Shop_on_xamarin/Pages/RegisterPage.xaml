@@ -1,0 +1,13 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Shop_on_xamarin.Pages.Page1">
+    <ContentPage.Content>
+        <StackLayout VerticalOptions="CenterAndExpand" HorizontalOptions="Center">
+            <Entry x:Name="EntryLogin" Text="Логин"/>
+            <Entry x:Name="EntryEmail" Text="Электронная почта"/>
+            <Entry x:Name="EntryPassword" Text="Пароль"/>
+            <Button Text="Зарегистрироваться" Command="{Binding LoadData}"/>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>
