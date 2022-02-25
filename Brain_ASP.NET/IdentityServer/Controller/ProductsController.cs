@@ -45,14 +45,13 @@ namespace Identity_Server.Controller
         // PUT: api/Products/5
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPut("{id}")]
-        public async Task<IActionResult> PutProduct(int id, Product product)
+        public async Task<IActionResult> PutProduct(int id, ChangeProductModel product)
         {
             if (id != product.Id)
             {
                 return BadRequest();
             }
-
-            _context.Entry(product).State = EntityState.Modified;
+            _context.Entry(new Product() { Name = product.Name, Price = (int)product.Price, TypeProductId = (int)product.TypeProductId, Id = id }).State = EntityState.Modified;
 
             try
             {
