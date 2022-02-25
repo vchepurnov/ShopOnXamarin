@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 using Models.Identity;
+using Models;
 
 namespace Identity_Server.Context
 {
@@ -26,5 +27,6 @@ namespace Identity_Server.Context
         {
 
         }
+        public DbSet<Models.Product> Product { get; set; }
     }
 }

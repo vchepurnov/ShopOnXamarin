@@ -1,6 +1,7 @@
 ﻿using System;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
+using Shop_on_xamarin.Pages;
 
 namespace Shop_on_xamarin
 {
@@ -10,7 +11,7 @@ namespace Shop_on_xamarin
         {
             InitializeComponent();
 
-            MainPage = new MainPage();
+            MainPage = new Page1();
         }
 
         protected override void OnStart()
