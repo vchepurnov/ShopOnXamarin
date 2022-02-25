@@ -14,12 +14,6 @@ namespace Identity_Server.Context
         }
         protected override void OnModelCreating(ModelBuilder builder)
         {
-            builder.Entity<ApplicationUser>(entity =>
-            {
-                entity.HasOne(e => e.ShoppingCart)
-                .WithOne(a => a.ApplicationUser)
-                .HasForeignKey<ApplicationUser>(e => e.ShoppingCartId);
-            });
             base.OnModelCreating(builder);
 
         }
