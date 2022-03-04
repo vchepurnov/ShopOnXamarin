@@ -1,5 +1,4 @@
 using Identity_Server.Context;
-using Identity_Server.DI.ProductDI;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
@@ -40,7 +39,6 @@ namespace Identity_Server
             {
                 options.UseNpgsql(Configuration.GetConnectionString("DefaultConnection"));
             });
-            services.AddScoped<ProductDI>();
             //
 
             services.AddIdentity<ApplicationUser, IdentityRole>(options =>
