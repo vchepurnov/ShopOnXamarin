@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Identity_Server.Context;
 using Models;
+using Identity_Server.DI.ProductDI;
 
 namespace Identity_Server.Controller
 {
@@ -45,14 +46,13 @@ namespace Identity_Server.Controller
         // PUT: api/Products/5
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPut("{id}")]
-        public async Task<IActionResult> PutProduct(int id, Product product)
+        public async Task<IActionResult> PutProduct(int id, ChangeProductModel product)
         {
             if (id != product.Id)
             {
                 return BadRequest();
             }
-
-            _context.Entry(product).State = EntityState.Modified;
+            _context.Entry(new Product() { Name = product.Name, Price = (int)product.Price, TypeProductId = (int)product.TypeProductId, Id = id }).State = EntityState.Modified;
 
             try
             {
@@ -75,10 +75,12 @@ namespace Identity_Server.Controller
 
         // POST: api/Products
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
+        [Route("add-product")]
         [HttpPost]
-        public async Task<ActionResult<Product>> PostProduct(Product product)
+        public async Task<ActionResult<Product>> PostProduct(AddProductModel product)
         {
-            _context.Product.Add(product);
+            _context.Product.Add(new Product() {Name = product.Name, Price = product.Price, TypeProductId = product.TypeProductId });
+
             await _context.SaveChangesAsync();
 
             return CreatedAtAction("GetProduct", new { id = product.Id }, product);
@@ -103,6 +105,32 @@ namespace Identity_Server.Controller
         private bool ProductExists(int id)
         {
             return _context.Product.Any(e => e.Id == id);
+        }
+
+        // DI
+        private readonly ProductDI _productDI;
+
+        public ProductsController(ProductDI productDI)
+        {
+            this._productDI = productDI;
+        }
+
+
+        [HttpGet("getProductDI")]
+        public ActionResult<Product> GetProduct(string productName)
+        {
+            var foundProduct = _productDI.FindProductByName(productName);
+            return foundProduct != null
+                ? Ok(foundProduct)
+                : BadRequest("Такого продукта не найдено");
+        }
+
+        [HttpPost("addProdutDI")]
+        public async Task<ActionResult> AddProduct(AddProductModel newProduct)
+        {
+            return await _productDI.AddProduct(newProduct)
+                ? Ok()
+                : BadRequest("Не удалось добавить продукт");
         }
     }
 }
