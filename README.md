@@ -23,3 +23,18 @@ Json для регистрации
   }
 }
 ```
+Json для добавления продуктов
+```
+{
+  "id": 0,
+  "name": "string",
+  "price": 0,
+  "typeProductId": 0,
+  "typeProduct": {
+    
+  },
+  "photo": [
+    "string"
+  ]
+}
+```
