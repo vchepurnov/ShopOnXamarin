@@ -31,5 +31,6 @@ namespace TusbifoodMicroservice.Context
         public DbSet<TypeProduct> TypeProducts { get; set; }
         public DbSet<Seat> Seats { get; set; }
         public DbSet<Table> Tables { get; set; }
+        public DbSet<UserProfile> UserProfiles { get; set; }
     }
 }
