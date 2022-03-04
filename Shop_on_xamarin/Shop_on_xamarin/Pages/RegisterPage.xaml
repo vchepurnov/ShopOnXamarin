@@ -1,0 +1,36 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Shop_on_xamarin.Pages.Page1">
+    <ContentPage.Content>
+        <StackLayout>
+            <Button Text="Load data"
+                    Command="{Binding loading}"
+                    />
+
+            <StackLayout
+                BindableLayout.ItemsSource="{Binding picture}">
+                <BindableLayout.ItemTemplate>
+                    <DataTemplate>
+                        <StackLayout>
+                            <Frame
+                                BorderColor="Black"
+                                HasShadow="True"
+                                Margin="5">
+                                <StackLayout>
+                                    <Label Text="{Binding Id}"
+                                           FontSize="15"/>
+                                    <Label Text="{Binding Name}" 
+                                           FontSize="20"/>
+                                    <Label Text="{Binding Price}" 
+                                           FontSize="20"/>
+                                </StackLayout>
+                            </Frame>
+                        </StackLayout>
+                    </DataTemplate>
+                </BindableLayout.ItemTemplate>
+            </StackLayout>
+
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

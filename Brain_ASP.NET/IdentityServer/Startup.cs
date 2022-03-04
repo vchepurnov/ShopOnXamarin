@@ -1,4 +1,5 @@
 using Identity_Server.Context;
+using Identity_Server.DI.ProductDI;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
@@ -10,6 +11,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.IdentityModel.Tokens;
 using Microsoft.OpenApi.Models;
+using MobileBackend;
 using Models.Identity;
 using System;
 using System.Text;
@@ -33,6 +35,14 @@ namespace Identity_Server
             services.AddDbContext<ApplicationDbContext>(options =>
             options.UseNpgsql(connection));
 
+            // подключение ProductDI
+            services.AddDbContext<ApplicationContext>(options =>
+            {
+                options.UseNpgsql(Configuration.GetConnectionString("DefaultConnection"));
+            });
+            services.AddScoped<ProductDI>();
+            //
+
             services.AddIdentity<ApplicationUser, IdentityRole>(options =>
             {
                 options.SignIn.RequireConfirmedEmail = false;
@@ -44,6 +54,7 @@ namespace Identity_Server
                 options.Password.RequireNonAlphanumeric = false;
                 options.Password.RequireUppercase = true;
             })
+
                 .AddEntityFrameworkStores<ApplicationDbContext>()
                 .AddDefaultTokenProviders();
 
@@ -103,6 +114,7 @@ namespace Identity_Server
                 });
             });
         }
+
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
