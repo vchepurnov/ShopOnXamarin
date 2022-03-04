@@ -1,12 +1,13 @@
 ﻿using Microsoft.AspNetCore.Identity;
 using System.Collections.ObjectModel;
+using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Models.Identity
 {
-    public class ApplicationUser: IdentityUser
+    public class ApplicationUser : IdentityUser
     {
-        public int ShoppingCartId { get; set; }
-        public ShoppingCart ShoppingCart { get; set; }
-        public ObservableCollection<Order> Orders { get; set; }
+        public UserProfile UserProfile { get; set; }
+
     }
 }

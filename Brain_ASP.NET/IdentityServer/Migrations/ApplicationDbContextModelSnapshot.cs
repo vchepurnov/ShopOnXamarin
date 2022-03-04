@@ -210,18 +210,15 @@ namespace Identity_Server.Migrations
                     b.Property<string>("SecurityStamp")
                         .HasColumnType("text");
 
-                    b.Property<int>("ShoppingCartId")
-                        .HasColumnType("integer");
-
-                    b.Property<int?>("ShoppingCartId1")
-                        .HasColumnType("integer");
-
                     b.Property<bool>("TwoFactorEnabled")
                         .HasColumnType("boolean");
 
                     b.Property<string>("UserName")
                         .HasMaxLength(256)
                         .HasColumnType("character varying(256)");
+
+                    b.Property<int?>("UserProfileId")
+                        .HasColumnType("integer");
 
                     b.HasKey("Id");
 
@@ -232,7 +229,7 @@ namespace Identity_Server.Migrations
                         .IsUnique()
                         .HasDatabaseName("UserNameIndex");
 
-                    b.HasIndex("ShoppingCartId1");
+                    b.HasIndex("UserProfileId");
 
                     b.ToTable("AspNetUsers");
                 });
@@ -250,9 +247,14 @@ namespace Identity_Server.Migrations
                     b.Property<int>("Status")
                         .HasColumnType("integer");
 
+                    b.Property<int?>("UserProfileId")
+                        .HasColumnType("integer");
+
                     b.HasKey("Id");
 
                     b.HasIndex("ApplicationUserId");
+
+                    b.HasIndex("UserProfileId");
 
                     b.ToTable("Order");
                 });
@@ -273,7 +275,7 @@ namespace Identity_Server.Migrations
                     b.Property<int>("Price")
                         .HasColumnType("integer");
 
-                    b.Property<int?>("TypeProductId")
+                    b.Property<int>("TypeProductId")
                         .HasColumnType("integer");
 
                     b.HasKey("Id");
@@ -303,8 +305,6 @@ namespace Identity_Server.Migrations
 
                     b.HasIndex("ShoppingCartId");
 
-                    b.HasIndex("TableId");
-
                     b.ToTable("Seat");
                 });
 
@@ -315,24 +315,9 @@ namespace Identity_Server.Migrations
                         .HasColumnType("integer")
                         .HasAnnotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn);
 
-                    b.Property<string>("ApplicationUserId")
-                        .HasColumnType("text");
-
                     b.HasKey("Id");
 
-                    b.ToTable("ShoppingCart");
-                });
-
-            modelBuilder.Entity("Models.Table", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("integer")
-                        .HasAnnotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn);
-
-                    b.HasKey("Id");
-
-                    b.ToTable("Table");
+                    b.ToTable("ShoppingCarts");
                 });
 
             modelBuilder.Entity("Models.TypeProduct", b =>
@@ -353,6 +338,29 @@ namespace Identity_Server.Migrations
                     b.HasIndex("CategoryId");
 
                     b.ToTable("TypeProduct");
+                });
+
+            modelBuilder.Entity("Models.UserProfile", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("integer")
+                        .HasAnnotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn);
+
+                    b.Property<string>("FirstName")
+                        .HasColumnType("text");
+
+                    b.Property<string>("SecondName")
+                        .HasColumnType("text");
+
+                    b.Property<int?>("ShoppingCartId")
+                        .HasColumnType("integer");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("ShoppingCartId");
+
+                    b.ToTable("UserProfile");
                 });
 
             modelBuilder.Entity("OrderProduct", b =>
@@ -453,18 +461,22 @@ namespace Identity_Server.Migrations
 
             modelBuilder.Entity("Models.Identity.ApplicationUser", b =>
                 {
-                    b.HasOne("Models.ShoppingCart", "ShoppingCart")
+                    b.HasOne("Models.UserProfile", "UserProfile")
                         .WithMany()
-                        .HasForeignKey("ShoppingCartId1");
+                        .HasForeignKey("UserProfileId");
 
-                    b.Navigation("ShoppingCart");
+                    b.Navigation("UserProfile");
                 });
 
             modelBuilder.Entity("Models.Order", b =>
                 {
                     b.HasOne("Models.Identity.ApplicationUser", "ApplicationUser")
-                        .WithMany("Orders")
+                        .WithMany()
                         .HasForeignKey("ApplicationUserId");
+
+                    b.HasOne("Models.UserProfile", null)
+                        .WithMany("Orders")
+                        .HasForeignKey("UserProfileId");
 
                     b.Navigation("ApplicationUser");
                 });
@@ -473,7 +485,9 @@ namespace Identity_Server.Migrations
                 {
                     b.HasOne("Models.TypeProduct", "TypeProduct")
                         .WithMany()
-                        .HasForeignKey("TypeProductId");
+                        .HasForeignKey("TypeProductId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
 
                     b.Navigation("TypeProduct");
                 });
@@ -484,15 +498,7 @@ namespace Identity_Server.Migrations
                         .WithMany("Seats")
                         .HasForeignKey("ShoppingCartId");
 
-                    b.HasOne("Models.Table", "Table")
-                        .WithMany("Seats")
-                        .HasForeignKey("TableId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
                     b.Navigation("ShoppingCart");
-
-                    b.Navigation("Table");
                 });
 
             modelBuilder.Entity("Models.TypeProduct", b =>
@@ -502,6 +508,15 @@ namespace Identity_Server.Migrations
                         .HasForeignKey("CategoryId");
 
                     b.Navigation("Category");
+                });
+
+            modelBuilder.Entity("Models.UserProfile", b =>
+                {
+                    b.HasOne("Models.ShoppingCart", "ShoppingCart")
+                        .WithMany()
+                        .HasForeignKey("ShoppingCartId");
+
+                    b.Navigation("ShoppingCart");
                 });
 
             modelBuilder.Entity("OrderProduct", b =>
@@ -554,19 +569,14 @@ namespace Identity_Server.Migrations
                     b.Navigation("TypeProducts");
                 });
 
-            modelBuilder.Entity("Models.Identity.ApplicationUser", b =>
-                {
-                    b.Navigation("Orders");
-                });
-
             modelBuilder.Entity("Models.ShoppingCart", b =>
                 {
                     b.Navigation("Seats");
                 });
 
-            modelBuilder.Entity("Models.Table", b =>
+            modelBuilder.Entity("Models.UserProfile", b =>
                 {
-                    b.Navigation("Seats");
+                    b.Navigation("Orders");
                 });
 #pragma warning restore 612, 618
         }

@@ -5,7 +5,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace ProfileMicroservices.Controllers
+namespace TusbifoodMicroservice.Controllers
 {
     [ApiController]
     [Route("[controller]")]

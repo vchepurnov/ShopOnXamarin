@@ -1,6 +1,6 @@
 using System;
 
-namespace ProfileMicroservices
+namespace TusbifoodMicroservice
 {
     public class WeatherForecast
     {
