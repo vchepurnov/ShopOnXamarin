@@ -2,6 +2,7 @@ using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
@@ -11,8 +12,9 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using TusbifoodMicroservice.Context;
 
-namespace ApiGateway
+namespace TusbifoodMicroservice
 {
     public class Startup
     {
@@ -28,9 +30,14 @@ namespace ApiGateway
         {
 
             services.AddControllers();
+
+            string connection = Configuration.GetConnectionString("DefaultConnection");
+            services.AddDbContext<TusbiFoodContext>(options =>
+            options.UseNpgsql(connection));
+
             services.AddSwaggerGen(c =>
             {
-                c.SwaggerDoc("v1", new OpenApiInfo { Title = "ApiGateway", Version = "v1" });
+                c.SwaggerDoc("v1", new OpenApiInfo { Title = "TusbifoodMicroservice", Version = "v1" });
             });
         }
 
@@ -41,7 +48,7 @@ namespace ApiGateway
             {
                 app.UseDeveloperExceptionPage();
                 app.UseSwagger();
-                app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "ApiGateway v1"));
+                app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "TusbifoodMicroservice v1"));
             }
 
             app.UseHttpsRedirection();

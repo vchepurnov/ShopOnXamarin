@@ -15,12 +15,12 @@ namespace Identity_Server.Context
         protected override void OnModelCreating(ModelBuilder builder)
         {
             base.OnModelCreating(builder);
-
+            
         }
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
 
         }
-        public DbSet<Models.Product> Product { get; set; }
+        public DbSet<ShoppingCart> ShoppingCarts { get; set; }
     }
 }
