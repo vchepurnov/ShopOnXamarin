@@ -17,7 +17,7 @@ namespace Shop_on_xamarin.Pages
         public Page1()
         {
             InitializeComponent();
-            //BindingContext = _vm;
+            BindingContext = _vm;
         }
 
     }
