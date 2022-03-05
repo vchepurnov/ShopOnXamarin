@@ -1,0 +1,24 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+       xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+       xmlns:views="clr-namespace:Shop_on_xamarin.Pages" 
+       x:Class="Shop_on_xamarin.Pages.StartPage"
+       Title="TISBI.Еда">
+
+    <StackLayout
+        VerticalOptions="FillAndExpand">
+        <Label Text="TISBI.Еда"
+               TextColor="White"
+               VerticalOptions="StartAndExpand"
+               HeightRequest="50"
+               BackgroundColor="Red"
+               FontSize="30"/>
+        <Button
+            BackgroundColor="Red"
+            Text="Забронировать место"
+            VerticalOptions="End">
+        </Button>
+    </StackLayout>
+    
+    
+</ContentPage>

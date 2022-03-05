@@ -1,0 +1,46 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Shop_on_xamarin.Pages.ProductsPage"
+             Title="TISBI.Еда">
+    <ScrollView>
+        <StackLayout>
+            <Image Grid.Column="0" Grid.Row="0" Source="https://avatars.mds.yandex.net/get-zen_doc/1665167/pub_5d1fb4eb64271d00adc450f7_5d1fb511e232d400adc783bd/scale_1200"/>
+
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="30" />
+                    <RowDefinition Height="40"/>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="200" />
+                    <ColumnDefinition Width="150" />
+                    <ColumnDefinition Width="*" />
+                </Grid.ColumnDefinitions>
+
+                <Label Grid.Column="0" Grid.Row="0" Text="Сосиска в тесте"
+                       FontSize="23"
+                       HorizontalOptions="Center"
+                       TextColor="Black"
+                      />
+                <Label Grid.Column="1" Grid.Row="0" Text="39"
+                       FontSize="20"
+                       HorizontalOptions="End"
+                       TextColor="Black"
+                       />
+                <Label Grid.Column="2" Grid.Row="0" Text="р."
+                       FontSize="20"
+                       TextColor="Black"
+                       />
+
+            </Grid>
+            <Button Text="Подробно"
+                    BackgroundColor="Red"
+                    HorizontalOptions="Center"
+                    WidthRequest="150"
+                    HeightRequest="45"
+                    CornerRadius="30"
+                    />
+        </StackLayout>
+    </ScrollView>
+</ContentPage>

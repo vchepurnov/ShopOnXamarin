@@ -1,36 +1,24 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
-<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+<Shell xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="Shop_on_xamarin.Pages.Page1">
-    <ContentPage.Content>
-        <StackLayout>
-            <Button Text="Load data"
-                    Command="{Binding loading}"
-                    />
+             xmlns:views="clr-namespace:Shop_on_xamarin.Pages" 
+             x:Class="Shop_on_xamarin.Pages.Page1"
+             BackgroundColor="Red"
+             TabBarUnselectedColor="White">
 
-            <StackLayout
-                BindableLayout.ItemsSource="{Binding picture}">
-                <BindableLayout.ItemTemplate>
-                    <DataTemplate>
-                        <StackLayout>
-                            <Frame
-                                BorderColor="Black"
-                                HasShadow="True"
-                                Margin="5">
-                                <StackLayout>
-                                    <Label Text="{Binding Id}"
-                                           FontSize="15"/>
-                                    <Label Text="{Binding Name}" 
-                                           FontSize="20"/>
-                                    <Label Text="{Binding Price}" 
-                                           FontSize="20"/>
-                                </StackLayout>
-                            </Frame>
-                        </StackLayout>
-                    </DataTemplate>
-                </BindableLayout.ItemTemplate>
-            </StackLayout>
+    <Tab Icon="https://cdn-icons-png.flaticon.com/512/3141/3141698.png">
+        
+        <ShellContent ContentTemplate="{DataTemplate views:ProductsPage}" />
+    </Tab>
+    
+    <Tab Icon="https://cdn-icons-png.flaticon.com/512/743/743088.png">
+        
+        <ShellContent ContentTemplate="{DataTemplate views:ShoppingCartPage}"/>
+    </Tab>
+    
+    <Tab Icon="https://cdn-icons.flaticon.com/png/512/5166/premium/5166133.png?token=exp=1646421163~hmac=220cc9174400ea46574f931d12595993">
 
-        </StackLayout>
-    </ContentPage.Content>
-</ContentPage>
+        <ShellContent ContentTemplate="{DataTemplate views:OrderListPage}"/>
+    </Tab>
+
+</Shell>
