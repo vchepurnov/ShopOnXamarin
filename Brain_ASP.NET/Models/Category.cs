@@ -1,4 +1,5 @@
-﻿using System.Collections.ObjectModel;
+﻿using System.Collections.Generic;
+using System.Collections.ObjectModel;
 
 namespace Models
 {
@@ -6,6 +7,6 @@ namespace Models
     {
         public int Id { get; set; }
         public string Name { get; set; }
-        public ObservableCollection<TypeProduct> TypeProducts { get; set; }
+        public ICollection<TypeProduct> TypeProducts { get; set; }
     }
 }

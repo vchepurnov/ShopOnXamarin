@@ -10,7 +10,6 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.IdentityModel.Tokens;
 using Microsoft.OpenApi.Models;
-using MobileBackend;
 using Models.Identity;
 using System;
 using System.Text;
@@ -34,14 +33,7 @@ namespace Identity_Server
             services.AddDbContext<ApplicationDbContext>(options =>
             options.UseNpgsql(connection));
 
-            // подключение ProductDI
-            services.AddDbContext<ApplicationContext>(options =>
-            {
-                options.UseNpgsql(Configuration.GetConnectionString("DefaultConnection"));
-            });
-            //
-
-            services.AddIdentity<ApplicationUser, IdentityRole>(options =>
+            services.AddIdentity<AspNetUser, IdentityRole>(options =>
             {
                 options.SignIn.RequireConfirmedEmail = false;
                 options.SignIn.RequireConfirmedPhoneNumber = false;

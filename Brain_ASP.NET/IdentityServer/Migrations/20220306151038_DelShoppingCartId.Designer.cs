@@ -3,15 +3,17 @@ using System;
 using Identity_Server.Context;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 
 namespace Identity_Server.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20220306151038_DelShoppingCartId")]
+    partial class DelShoppingCartId
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -163,23 +165,6 @@ namespace Identity_Server.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Categories");
-
-                    b.HasData(
-                        new
-                        {
-                            Id = 1,
-                            Name = "Еда"
-                        },
-                        new
-                        {
-                            Id = 2,
-                            Name = "Напитки"
-                        },
-                        new
-                        {
-                            Id = 3,
-                            Name = "Прочее"
-                        });
                 });
 
             modelBuilder.Entity("Models.Identity.AspNetUser", b =>
@@ -234,6 +219,9 @@ namespace Identity_Server.Migrations
                         .HasMaxLength(256)
                         .HasColumnType("character varying(256)");
 
+                    b.Property<int>("UserProfileId")
+                        .HasColumnType("integer");
+
                     b.HasKey("Id");
 
                     b.HasIndex("NormalizedEmail")
@@ -242,6 +230,9 @@ namespace Identity_Server.Migrations
                     b.HasIndex("NormalizedUserName")
                         .IsUnique()
                         .HasDatabaseName("UserNameIndex");
+
+                    b.HasIndex("UserProfileId")
+                        .IsUnique();
 
                     b.ToTable("AspNetUsers");
                 });
@@ -396,44 +387,6 @@ namespace Identity_Server.Migrations
                     b.HasIndex(new[] { "CategoryId" }, "IX_TypeProduct_CaregoryId");
 
                     b.ToTable("TypeProduct");
-
-                    b.HasData(
-                        new
-                        {
-                            Id = 1,
-                            CategoryId = 1,
-                            Name = "Основное блюдо"
-                        },
-                        new
-                        {
-                            Id = 2,
-                            CategoryId = 1,
-                            Name = "Гарнир"
-                        },
-                        new
-                        {
-                            Id = 3,
-                            CategoryId = 1,
-                            Name = "Добавки к гарниру"
-                        },
-                        new
-                        {
-                            Id = 4,
-                            CategoryId = 2,
-                            Name = "Холодный напиток"
-                        },
-                        new
-                        {
-                            Id = 5,
-                            CategoryId = 2,
-                            Name = "Горячий напиток"
-                        },
-                        new
-                        {
-                            Id = 6,
-                            CategoryId = 3,
-                            Name = "Прочее"
-                        });
                 });
 
             modelBuilder.Entity("Models.UserProfile", b =>
@@ -453,9 +406,6 @@ namespace Identity_Server.Migrations
                         .HasColumnType("text");
 
                     b.HasKey("Id");
-
-                    b.HasIndex("AspNetUserId")
-                        .IsUnique();
 
                     b.ToTable("UserProfile");
                 });
@@ -509,6 +459,17 @@ namespace Identity_Server.Migrations
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
+                });
+
+            modelBuilder.Entity("Models.Identity.AspNetUser", b =>
+                {
+                    b.HasOne("Models.UserProfile", "UserProfile")
+                        .WithOne("AspNetUser")
+                        .HasForeignKey("Models.Identity.AspNetUser", "UserProfileId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("UserProfile");
                 });
 
             modelBuilder.Entity("Models.Order", b =>
@@ -619,23 +580,9 @@ namespace Identity_Server.Migrations
                     b.Navigation("Category");
                 });
 
-            modelBuilder.Entity("Models.UserProfile", b =>
-                {
-                    b.HasOne("Models.Identity.AspNetUser", "AspNetUser")
-                        .WithOne("UserProfile")
-                        .HasForeignKey("Models.UserProfile", "AspNetUserId");
-
-                    b.Navigation("AspNetUser");
-                });
-
             modelBuilder.Entity("Models.Category", b =>
                 {
                     b.Navigation("TypeProducts");
-                });
-
-            modelBuilder.Entity("Models.Identity.AspNetUser", b =>
-                {
-                    b.Navigation("UserProfile");
                 });
 
             modelBuilder.Entity("Models.Order", b =>
@@ -671,6 +618,8 @@ namespace Identity_Server.Migrations
 
             modelBuilder.Entity("Models.UserProfile", b =>
                 {
+                    b.Navigation("AspNetUser");
+
                     b.Navigation("Orders");
 
                     b.Navigation("ShoppingCart");
