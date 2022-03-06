@@ -5,8 +5,11 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Models.Identity
 {
-    public class ApplicationUser : IdentityUser
+    public class AspNetUser : IdentityUser
     {
+        public AspNetUser()
+        {
+        }
         public UserProfile UserProfile { get; set; }
 
     }
