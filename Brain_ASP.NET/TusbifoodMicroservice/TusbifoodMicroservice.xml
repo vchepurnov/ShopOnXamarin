@@ -1,0 +1,20 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>TusbifoodMicroservice</name>
+    </assembly>
+    <members>
+        <member name="M:TusbifoodMicroservice.Controllers.ShoppingCartsController.GetProductShoppingCarts">
+            <summary>
+            Кнотроллер для админа
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:TusbifoodMicroservice.Controllers.ShoppingCartsController.GetProductShoppingCart(System.Int32)">
+            <summary>
+            Controller for Admin
+            </summary>
+            <returns></returns>
+        </member>
+    </members>
+</doc>
