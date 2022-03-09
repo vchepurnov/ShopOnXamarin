@@ -12,27 +12,21 @@ Json для регистрации
   "email": "user@example.com",
   "password": "string",
   "userProfile": {
-    "id": 0,
     "firstName": "string",
     "secondName": "string",
     "orders": [
       {}
     ],
-    "shoppingCart": {},
-    "shoppingCartId": 0
+    "shoppingCart": {}
   }
 }
 ```
 Json для добавления продуктов
 ```
 {
-  "id": 0,
   "name": "string",
   "price": 0,
   "typeProductId": 0,
-  "typeProduct": {
-    
-  },
   "photo": [
     "string"
   ]

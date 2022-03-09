@@ -51,7 +51,12 @@ namespace TusbifoodMicroservice
                 app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "TusbifoodMicroservice v1"));
             }
 
-            app.UseHttpsRedirection();
+            //app.UseHttpsRedirection();
+            app.UseCors(Bilding =>
+            { Bilding.AllowAnyOrigin();
+                Bilding.AllowAnyMethod();
+                Bilding.AllowAnyHeader();
+            });
 
             app.UseRouting();
 
