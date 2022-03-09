@@ -5,6 +5,30 @@
              Title="TISBI.Еда">
     <ScrollView>
         <StackLayout>
+                <Button 
+                Text="Загрузить"
+                Command="{Binding loadingCategories}"/>
+                <StackLayout
+                    BindableLayout.ItemsSource="{Binding category}">            
+                    <BindableLayout.ItemTemplate>
+                        <DataTemplate>
+                            <StackLayout>
+                                <Frame
+                                        BorderColor="Black"
+                                        HasShadow="True"
+                                        Margin="10">
+                                    <StackLayout>
+                                        <Label Text="{Binding Name}" 
+                                                   FontSize="32"/>
+                                    </StackLayout>
+                                </Frame>
+                            </StackLayout>
+                        </DataTemplate>
+                    </BindableLayout.ItemTemplate>
+                </StackLayout>
+        </StackLayout>
+        
+        <!--<StackLayout>
             <Image Grid.Column="0" Grid.Row="0" Source="https://avatars.mds.yandex.net/get-zen_doc/1665167/pub_5d1fb4eb64271d00adc450f7_5d1fb511e232d400adc783bd/scale_1200"/>
 
             <Grid>
@@ -41,6 +65,6 @@
                     HeightRequest="45"
                     CornerRadius="30"
                     />
-        </StackLayout>
+        </StackLayout>-->
     </ScrollView>
 </ContentPage>

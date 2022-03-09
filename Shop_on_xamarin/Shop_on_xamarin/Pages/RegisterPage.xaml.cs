@@ -13,11 +13,11 @@ namespace Shop_on_xamarin.Pages
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class Page1 : Shell
     {
-        private readonly RegisterViewModel _vm = new RegisterViewModel();
+        private readonly CategoriesViewModel _vm1 = new CategoriesViewModel();
         public Page1()
         {
             InitializeComponent();
-            BindingContext = _vm;
+            BindingContext = _vm1;
         }
 
     }
