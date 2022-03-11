@@ -16,6 +16,7 @@ namespace Models
         public int Price { get; set; }
         public int TypeProductId { get; set; }
         public string[] Photo { get; set; }
+        public string MainPhoto { get; set; }
 
         public virtual TypeProduct TypeProduct { get; set; }
         public virtual ICollection<OrderProduct> OrderProducts { get; set; }
