@@ -6,17 +6,17 @@
              BackgroundColor="Red"
              TabBarUnselectedColor="White">
 
-    <Tab Icon="https://cdn-icons-png.flaticon.com/512/3141/3141698.png">
+    <Tab Icon="products.png" Title="Меню">
         
         <ShellContent ContentTemplate="{DataTemplate views:ProductsPage}" />
     </Tab>
-    
-    <Tab Icon="https://cdn-icons-png.flaticon.com/512/743/743088.png">
+
+    <Tab Icon="shopingcart.png" Title="Корзина">
         
         <ShellContent ContentTemplate="{DataTemplate views:ShoppingCartPage}"/>
     </Tab>
-    
-    <Tab Icon="https://cdn-icons.flaticon.com/png/512/5166/premium/5166133.png?token=exp=1646421163~hmac=220cc9174400ea46574f931d12595993">
+
+    <Tab Icon="order.png" Title="Заказы">
 
         <ShellContent ContentTemplate="{DataTemplate views:OrderListPage}"/>
     </Tab>

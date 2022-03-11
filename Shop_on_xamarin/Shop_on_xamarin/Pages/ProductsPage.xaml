@@ -1,70 +1,56 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:local="clr-namespace:Shop_on_xamarin.Pages"
              x:Class="Shop_on_xamarin.Pages.ProductsPage"
              Title="TISBI.Еда">
-    <ScrollView>
-        <StackLayout>
-                <Button 
-                Text="Загрузить"
-                Command="{Binding loadingCategories}"/>
-                <StackLayout
-                    BindableLayout.ItemsSource="{Binding category}">            
-                    <BindableLayout.ItemTemplate>
-                        <DataTemplate>
+
+    <ListView ItemsSource="{Binding product}"
+              HasUnevenRows="True"
+              SeparatorColor="Red"
+              SeparatorVisibility="None"
+              ItemSelected="ListView_ItemSelected"
+              ItemTapped="ListView_ItemTapped">
+        <ListView.ItemTemplate>
+            <DataTemplate>
+                <ViewCell>
+                    <Grid Padding="20">
+                        <Frame CornerRadius="20"
+                               HasShadow="True">
                             <StackLayout>
-                                <Frame
-                                        BorderColor="Black"
-                                        HasShadow="True"
-                                        Margin="10">
-                                    <StackLayout>
-                                        <Label Text="{Binding Name}" 
-                                                   FontSize="32"/>
-                                    </StackLayout>
-                                </Frame>
+                                <Image Source="https://avatars.mds.yandex.net/get-zen_doc/1665167/pub_5d1fb4eb64271d00adc450f7_5d1fb511e232d400adc783bd/scale_1200"/>
+                                <StackLayout VerticalOptions="Center">
+                                    <Grid>
+                                        <Label Grid.Row="0" Grid.Column="0"
+                                               FontSize="22"
+                                               TextColor="Black"
+                                               Text="{Binding Name}"/>
+                                        <Label Grid.Row="0" Grid.Column="1"
+                                               HorizontalOptions="End"
+                                               FontSize="25"
+                                               TextColor="Black">
+                                            <Label.FormattedText>
+                                                <FormattedString>
+                                                    <Span Text="{Binding Price}"/>
+                                                    <Span Text="р."/>
+                                                </FormattedString>
+                                            </Label.FormattedText>
+                                        </Label>
+                                        
+                                    </Grid>
+                                </StackLayout>
+                                <Button Text="Подробнее"
+                                        TextColor="White"
+                                        CornerRadius="20"
+                                        BackgroundColor="Red"
+                                        HeightRequest="40"
+                                        WidthRequest="125"
+                                        HorizontalOptions="CenterAndExpand"/>
                             </StackLayout>
-                        </DataTemplate>
-                    </BindableLayout.ItemTemplate>
-                </StackLayout>
-        </StackLayout>
-        
-        <!--<StackLayout>
-            <Image Grid.Column="0" Grid.Row="0" Source="https://avatars.mds.yandex.net/get-zen_doc/1665167/pub_5d1fb4eb64271d00adc450f7_5d1fb511e232d400adc783bd/scale_1200"/>
-
-            <Grid>
-                <Grid.RowDefinitions>
-                    <RowDefinition Height="30" />
-                    <RowDefinition Height="40"/>
-                </Grid.RowDefinitions>
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="200" />
-                    <ColumnDefinition Width="150" />
-                    <ColumnDefinition Width="*" />
-                </Grid.ColumnDefinitions>
-
-                <Label Grid.Column="0" Grid.Row="0" Text="Сосиска в тесте"
-                       FontSize="23"
-                       HorizontalOptions="Center"
-                       TextColor="Black"
-                      />
-                <Label Grid.Column="1" Grid.Row="0" Text="39"
-                       FontSize="20"
-                       HorizontalOptions="End"
-                       TextColor="Black"
-                       />
-                <Label Grid.Column="2" Grid.Row="0" Text="р."
-                       FontSize="20"
-                       TextColor="Black"
-                       />
-
-            </Grid>
-            <Button Text="Подробно"
-                    BackgroundColor="Red"
-                    HorizontalOptions="Center"
-                    WidthRequest="150"
-                    HeightRequest="45"
-                    CornerRadius="30"
-                    />
-        </StackLayout>-->
-    </ScrollView>
+                        </Frame>
+                    </Grid>
+                </ViewCell>
+            </DataTemplate>
+        </ListView.ItemTemplate>
+    </ListView>
 </ContentPage>
