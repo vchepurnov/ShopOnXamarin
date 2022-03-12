@@ -20,6 +20,7 @@ namespace Shop_on_xamarin.Pages
         {
             InitializeComponent();
             BindingContext = _vm;
+            
             loading();
         }
         public async Task loading()

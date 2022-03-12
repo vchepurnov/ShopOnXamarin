@@ -7,7 +7,7 @@
              TabBarUnselectedColor="White">
 
     <Tab Icon="products.png" Title="Меню">
-        
+
         <ShellContent ContentTemplate="{DataTemplate views:ProductsPage}" />
     </Tab>
 

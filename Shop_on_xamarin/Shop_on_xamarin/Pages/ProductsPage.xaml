@@ -18,7 +18,7 @@
                         <Frame CornerRadius="20"
                                HasShadow="True">
                             <StackLayout>
-                                <Image Source="https://avatars.mds.yandex.net/get-zen_doc/1665167/pub_5d1fb4eb64271d00adc450f7_5d1fb511e232d400adc783bd/scale_1200"/>
+                                <Image Source="{Binding MainPhoto}"/>
                                 <StackLayout VerticalOptions="Center">
                                     <Grid>
                                         <Label Grid.Row="0" Grid.Column="0"
