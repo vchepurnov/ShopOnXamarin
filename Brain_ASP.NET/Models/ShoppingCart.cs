@@ -1,7 +1,4 @@
-﻿using Microsoft.EntityFrameworkCore;
-using Models.Identity;
-using System.Collections.Generic;
-using System.Collections.ObjectModel;
+﻿using System.Collections.Generic;
 
 namespace Models
 {

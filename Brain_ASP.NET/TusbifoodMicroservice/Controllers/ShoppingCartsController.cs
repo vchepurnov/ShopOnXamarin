@@ -103,7 +103,6 @@ namespace TusbifoodMicroservice.Controllers
             var productShoppingCart = await _context.ProductShoppingCarts.Where(e => e.ShoppingCartsId == cartId).Select(p => p.ProductsId).ToListAsync();
             return await _context.Products.Where(e => productShoppingCart.Contains(e.Id)).ToListAsync();
         }
-
         private bool ProductShoppingCartExists(int id)
         {
             return _context.ProductShoppingCarts.Any(e => e.ProductsId == id);
