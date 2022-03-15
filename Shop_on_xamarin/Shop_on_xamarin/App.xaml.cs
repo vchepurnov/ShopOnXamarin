@@ -11,7 +11,7 @@ namespace Shop_on_xamarin
         {
             InitializeComponent();
 
-            MainPage = new Page1();
+            MainPage = new TableReservationPage();
         }
 
         protected override void OnStart()

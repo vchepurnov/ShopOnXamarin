@@ -19,8 +19,7 @@ namespace Shop_on_xamarin.Pages
         public ProductsPage()
         {
             InitializeComponent();
-            BindingContext = _vm;
-            
+            BindingContext = _vm;         
             loading();
         }
         public async Task loading()
@@ -30,12 +29,21 @@ namespace Shop_on_xamarin.Pages
 
         private async void ListView_ItemSelected(object sender, SelectedItemChangedEventArgs e)
         {
-           
+            var product = ((ListView)sender).SelectedItem as Product;
+            if (product == null)
+                return;
+            var Id = product.Id;
+            await Navigation.PushAsync(new DescriptionProductPage(Id));
         }
 
         private void ListView_ItemTapped(object sender, ItemTappedEventArgs e)
         {
             ((ListView)sender).SelectedItem = null;
+        }
+
+        private void Open_Description(object sender, EventArgs e)
+        {
+            
         }
     }
 }

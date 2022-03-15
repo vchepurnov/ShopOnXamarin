@@ -1,5 +1,4 @@
-﻿using Shop_on_xamarin.ViewModels;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -11,12 +10,11 @@ using Xamarin.Forms.Xaml;
 namespace Shop_on_xamarin.Pages
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
-    public partial class Page1 : Shell
+    public partial class TableReservationPage : ContentPage
     {
-        public Page1()
+        public TableReservationPage()
         {
             InitializeComponent();
         }
-
     }
 }

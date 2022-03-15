@@ -39,13 +39,14 @@
                                         
                                     </Grid>
                                 </StackLayout>
-                                <Button Text="Подробнее"
+                                <Button Text="В корзину"
                                         TextColor="White"
                                         CornerRadius="20"
                                         BackgroundColor="Red"
                                         HeightRequest="40"
                                         WidthRequest="125"
-                                        HorizontalOptions="CenterAndExpand"/>
+                                        HorizontalOptions="CenterAndExpand"
+                                        Clicked="Open_Description"/>
                             </StackLayout>
                         </Frame>
                     </Grid>

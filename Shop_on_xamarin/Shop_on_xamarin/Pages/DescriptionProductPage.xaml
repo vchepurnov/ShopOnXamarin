@@ -1,0 +1,53 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Shop_on_xamarin.Pages.DescriptionProductPage"
+             Title="TISBI.Еда">
+    <ContentPage.Content>
+        <StackLayout>
+            <Grid>
+                <Frame CornerRadius="20"
+                       Padding="3">
+                    <StackLayout>
+                        <Label Text="{Binding Name}" 
+                               FontSize="30"
+                               HorizontalOptions="Center"
+                               VerticalOptions="Start"
+                               TextColor="Black"
+                               Padding="0"/>
+                        <Image Grid.Row="0" Grid.Column="0" 
+                               Source="{Binding MainPhoto}"
+                               HeightRequest="250"/>
+
+                        <Label Grid.Row="1" Grid.Column="0"
+                               HorizontalOptions="End"
+                               FontSize="25"
+                               TextColor="Black">
+                            <Label.FormattedText>
+                                <FormattedString>
+                                    <Span Text="{Binding Price}"/>
+                                    <Span Text="р."/>
+                                </FormattedString>
+                            </Label.FormattedText>
+                        </Label>
+                    </StackLayout>
+                </Frame>
+                
+            </Grid>
+            <Label Text="Описание размером ляляляллял яляляллялялялялялялялялял ялялялляяя яяяяяяяяяяяя яяяяяяяяяяя яяяяяяяяяяяяяяяя яяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяя"
+                   TextColor="Black"
+                   FontSize="20"
+                   HorizontalOptions="CenterAndExpand"
+                   WidthRequest="390"/>
+            <Button Text="В корзину"
+                    TextColor="White"
+                    CornerRadius="20"
+                    BackgroundColor="Red"
+                    HeightRequest="40"
+                    WidthRequest="125"
+                    Margin="10"
+                    HorizontalOptions="CenterAndExpand"
+                    />
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

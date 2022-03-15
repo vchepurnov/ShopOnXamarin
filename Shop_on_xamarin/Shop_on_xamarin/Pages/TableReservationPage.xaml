@@ -1,0 +1,39 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Shop_on_xamarin.Pages.TableReservationPage">
+    <ContentPage.Content>
+        <StackLayout>
+            <Grid HeightRequest="400"
+                  Padding="0"
+                  Margin="0"
+                  BackgroundColor="LightGray">
+                <BoxView Color="LightGray" Grid.Column="0" Grid.Row="0" Grid.RowSpan="50" Grid.ColumnSpan="35" />
+                                     <!--начальный X    начальный Y       высота             ширина-->  
+                <BoxView Color="Gray" Grid.Column="1" Grid.Row="2" Grid.RowSpan="46" Grid.ColumnSpan="2"/>
+                <BoxView Color="Gray" Grid.Column="1" Grid.Row="46" Grid.RowSpan="3" Grid.ColumnSpan="18"/>
+                <BoxView Color="Gray" Grid.Column="25" Grid.Row="46" Grid.RowSpan="3" Grid.ColumnSpan="8"/> <!--Стены-->
+                <BoxView Color="Gray" Grid.Column="32" Grid.Row="2" Grid.RowSpan="47" Grid.ColumnSpan="2"/>
+                <BoxView Color="Gray" Grid.Column="2" Grid.Row="15" Grid.RowSpan="7" Grid.ColumnSpan="5"/>
+                <BoxView Color="Gray" Grid.Column="28" Grid.Row="15" Grid.RowSpan="7" Grid.ColumnSpan="5"/>
+
+                <Button BackgroundColor="Red" Grid.Column="4" Grid.Row="7" Grid.RowSpan="6" Grid.ColumnSpan="7" Text="4" TextColor="White"/>
+                <Button BackgroundColor="Red" Grid.Column="4" Grid.Row="22" Grid.RowSpan="6" Grid.ColumnSpan="7" Text="4" TextColor="White"/>
+                <Button BackgroundColor="Red" Grid.Column="4" Grid.Row="35" Grid.RowSpan="10" Grid.ColumnSpan="5" Text="4" TextColor="White"/>
+                <Button BackgroundColor="Red" Grid.Column="15" Grid.Row="7" Grid.RowSpan="21" Grid.ColumnSpan="7" Text="8" TextColor="White"/>
+                <Button BackgroundColor="Red" Grid.Column="11" Grid.Row="32" Grid.RowSpan="13" Grid.ColumnSpan="5" Text="6" TextColor="White"/>
+                <Button BackgroundColor="Red" Grid.Column="25" Grid.Row="22" Grid.RowSpan="6" Grid.ColumnSpan="7" Text="4" TextColor="White"/>
+                <Button BackgroundColor="Red" Grid.Column="25" Grid.Row="30" Grid.RowSpan="6" Grid.ColumnSpan="7" Text="4" TextColor="White"/>
+                <Button BackgroundColor="Red" Grid.Column="25" Grid.Row="38" Grid.RowSpan="6" Grid.ColumnSpan="7" Text="4" TextColor="White"/>
+            </Grid>
+            <Button Text="Выбрать стол"
+                    Margin="100"
+                    TextColor="White"
+                    CornerRadius="20"
+                    BackgroundColor="Red"
+                    HeightRequest="40"
+                    WidthRequest="150"
+                    HorizontalOptions="CenterAndExpand"/>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>
