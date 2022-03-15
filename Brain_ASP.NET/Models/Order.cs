@@ -9,7 +9,7 @@ namespace Models
         public Order()
         {
             OrderProducts = new HashSet<OrderProduct>();
-            OrderSeats = new HashSet<OrderSeat>();
+            Seats = new HashSet<Seat>();
         }
 
         public int Id { get; set; }
@@ -17,7 +17,7 @@ namespace Models
         public int? UserProfileId { get; set; }
         public virtual UserProfile UserProfile { get; set; }
         public virtual ICollection<OrderProduct> OrderProducts { get; set; }
-        public virtual ICollection<OrderSeat> OrderSeats { get; set; }
+        public virtual ICollection<Seat> Seats { get; set; }
     }
     public enum OrderStatus
     {

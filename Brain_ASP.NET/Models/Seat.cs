@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Models
 {
@@ -7,15 +8,19 @@ namespace Models
     {
         public Seat()
         {
-            OrderSeats = new HashSet<OrderSeat>();
         }
 
         public int Id { get; set; }
-        public bool IsBusy { get; set; }
+        /// <summary>
+        /// Для вернового отображения загружать с помощью Include(a => a.Order)
+        /// </summary>
+        [NotMapped]
+        public bool IsBusy { get => Order == null; }
         public int TableId { get; set; }
         public int? ShoppingCartId { get; set; }
 
         public virtual ShoppingCart ShoppingCart { get; set; }
-        public virtual ICollection<OrderSeat> OrderSeats { get; set; }
+        public int? OrderId { get; set; }
+        public virtual Order Order { get; set; }
     }
 }
