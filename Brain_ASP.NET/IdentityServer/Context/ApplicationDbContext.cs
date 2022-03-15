@@ -44,23 +44,6 @@ namespace Identity_Server.Context
                     .HasForeignKey(d => d.ProductsId);
             });
 
-            builder.Entity<OrderSeat>(entity =>
-            {
-                entity.HasKey(e => new { e.OrdersId, e.SeatsId });
-
-                entity.ToTable("OrderSeat");
-
-                entity.HasIndex(e => e.SeatsId, "IX_OrderSeat_SeatsId");
-
-                entity.HasOne(d => d.Orders)
-                    .WithMany(p => p.OrderSeats)
-                    .HasForeignKey(d => d.OrdersId);
-
-                entity.HasOne(d => d.Seats)
-                    .WithMany(p => p.OrderSeats)
-                    .HasForeignKey(d => d.SeatsId);
-            });
-
             builder.Entity<Product>(entity =>
             {
                 entity.ToTable("Product");
@@ -98,6 +81,10 @@ namespace Identity_Server.Context
                 entity.HasOne(d => d.ShoppingCart)
                     .WithMany(p => p.Seats)
                     .HasForeignKey(d => d.ShoppingCartId);
+
+                entity.HasOne(a => a.Order)
+                    .WithMany(p => p.Seats)
+                    .HasForeignKey(d => d.OrderId);
             });
 
             builder.Entity<TypeProduct>(entity =>
