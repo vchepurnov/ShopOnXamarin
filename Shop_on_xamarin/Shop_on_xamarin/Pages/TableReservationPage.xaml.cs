@@ -15,6 +15,17 @@ namespace Shop_on_xamarin.Pages
         public TableReservationPage()
         {
             InitializeComponent();
+            NavigationPage.SetHasNavigationBar(this, false);
+        }
+
+        private void GoToBack(object sender, EventArgs e)
+        {
+            Navigation.PopAsync();
+        }
+
+        private void GoToTablePage(object sender, EventArgs e)
+        {
+            Navigation.PushAsync(new TablePage4());
         }
     }
 }

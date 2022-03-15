@@ -45,5 +45,15 @@ namespace Shop_on_xamarin.Pages
         {
             
         }
+
+        private void GoToShopingCart(object sender, EventArgs e)
+        {
+            Navigation.PushAsync(new ShoppingCartPage());
+        }
+
+        private void GoToOrderListPage(object sender, EventArgs e)
+        {
+            Navigation.PushAsync(new OrderListPage());
+        }
     }
 }

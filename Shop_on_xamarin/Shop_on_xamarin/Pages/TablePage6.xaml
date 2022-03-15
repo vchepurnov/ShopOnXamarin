@@ -1,0 +1,54 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Shop_on_xamarin.Pages.TablePage6">
+    <ContentPage.Content>
+        <StackLayout>
+            <Label Text="Стол на 6 мест"
+                   HorizontalOptions="Center"
+                   FontSize="24"
+                   TextColor="Black"/>
+            <Frame Padding="1"
+                   CornerRadius="10"                   
+                   BorderColor="Black">
+                <Grid HeightRequest="400"
+                      Padding="0"
+                      Margin="0">
+                    <BoxView Color="LightGray" Grid.Column="0" Grid.Row="0" Grid.RowSpan="50" Grid.ColumnSpan="35" />
+                    <!--начальный X    начальный Y       высота             ширина-->
+                    <Button BackgroundColor="Red" Grid.Column="1" Grid.Row="6" Grid.RowSpan="12" Grid.ColumnSpan="9"/>
+                    <Button BackgroundColor="Red" Grid.Column="1" Grid.Row="19" Grid.RowSpan="12" Grid.ColumnSpan="9"/>
+                    <Button BackgroundColor="Red" Grid.Column="1" Grid.Row="32" Grid.RowSpan="12" Grid.ColumnSpan="9"/>
+                    <!--Стулья-->
+                    <Button BackgroundColor="Red" Grid.Column="25" Grid.Row="6" Grid.RowSpan="12" Grid.ColumnSpan="9" />
+                    <Button BackgroundColor="Red" Grid.Column="25" Grid.Row="19" Grid.RowSpan="12" Grid.ColumnSpan="9" />
+                    <Button BackgroundColor="Red" Grid.Column="25" Grid.Row="32" Grid.RowSpan="12" Grid.ColumnSpan="9" />
+                    
+
+                    <!--Стол-->
+                    <Button BackgroundColor="Gray" Grid.Column="11" Grid.Row="5" Grid.RowSpan="40" Grid.ColumnSpan="13"/>
+                </Grid>
+            </Frame>
+            
+            <Button Text="Выбрать место"
+                    TextColor="White"
+                    CornerRadius="30"
+                    Margin="30"
+                    BackgroundColor="Red"
+                    HeightRequest="50"
+                    WidthRequest="150"
+                    HorizontalOptions="CenterAndExpand"/>
+            
+            <Grid VerticalOptions="EndAndExpand">
+                <BoxView Color="Transparent" Grid.Column="0" Grid.Row="0" Grid.ColumnSpan="100" Grid.RowSpan="10"/>
+                <BoxView Color="Red" Grid.Column="0" Grid.Row="5" Grid.ColumnSpan="100" Grid.RowSpan="13"/>
+                <Ellipse Fill="White" Grid.Column="27" Grid.Row="0" Grid.ColumnSpan="17" Grid.RowSpan="17"/>
+                <ImageButton Grid.Column="28" Grid.Row="1" Grid.ColumnSpan="15" Grid.RowSpan="15"
+                         Source="gotoback.png"
+                         BackgroundColor="Red"                         
+                         CornerRadius="40"
+                         Clicked="GoToBack"/>
+            </Grid>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

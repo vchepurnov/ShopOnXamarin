@@ -5,7 +5,9 @@
              x:Class="Shop_on_xamarin.Pages.ProductsPage"
              Title="TISBI.Еда">
 
-    <ListView ItemsSource="{Binding product}"
+    
+    <StackLayout>
+        <ListView ItemsSource="{Binding product}"
               HasUnevenRows="True"
               SeparatorColor="Red"
               SeparatorVisibility="None"
@@ -36,7 +38,7 @@
                                                 </FormattedString>
                                             </Label.FormattedText>
                                         </Label>
-                                        
+
                                     </Grid>
                                 </StackLayout>
                                 <Button Text="В корзину"
@@ -54,4 +56,22 @@
             </DataTemplate>
         </ListView.ItemTemplate>
     </ListView>
+        <Grid HeightRequest="100">
+            <BoxView Color="Transparent" Grid.Column="0" Grid.Row="0" Grid.ColumnSpan="100" Grid.RowSpan="100"/>
+            <BoxView Color="Red" Grid.Column="0" Grid.Row="5" Grid.ColumnSpan="100" Grid.RowSpan="13"/>
+            <Ellipse Fill="White" Grid.Column="4" Grid.Row="0" Grid.ColumnSpan="17" Grid.RowSpan="17"/>
+            <ImageButton Grid.Column="5" Grid.Row="1" Grid.ColumnSpan="15" Grid.RowSpan="15"
+                         Source="products.png"
+                         BackgroundColor="Red"                         
+                         CornerRadius="100"/>
+            <ImageButton Grid.Column="27" Grid.Row="5" Grid.ColumnSpan="17" Grid.RowSpan="12"
+                         BackgroundColor="Red"
+                         Source="shopingcart.png"
+                         Clicked="GoToShopingCart"/>
+            <ImageButton Grid.Column="49" Grid.Row="5" Grid.ColumnSpan="17" Grid.RowSpan="12"
+                         BackgroundColor="Red"
+                         Source="startorder.png"
+                         Clicked="GoToOrderListPage"/>
+        </Grid>
+    </StackLayout>
 </ContentPage>

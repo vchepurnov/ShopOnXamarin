@@ -10,21 +10,17 @@ using Xamarin.Forms.Xaml;
 namespace Shop_on_xamarin.Pages
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
-    public partial class StartPage : ContentPage
+    public partial class TablePage6 : ContentPage
     {
-        public StartPage()
+        public TablePage6()
         {
             InitializeComponent();
             NavigationPage.SetHasNavigationBar(this, false);
         }
-        private void GoToTableReservationPage(object sender, EventArgs e)
-        {
-            Navigation.PushAsync(new TableReservationPage());
-        }
-        private void GoToOrderList(object sender, EventArgs e)
-        {
-            Navigation.PushAsync(new OrderListPage());
-        }
 
+        private void GoToBack(object sender, EventArgs e)
+        {
+            Navigation.PopAsync();
+        }
     }
 }

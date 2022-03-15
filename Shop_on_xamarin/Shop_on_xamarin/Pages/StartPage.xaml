@@ -1,23 +1,38 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
        xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-       xmlns:views="clr-namespace:Shop_on_xamarin.Pages" 
-       x:Class="Shop_on_xamarin.Pages.StartPage"
-       Title="TISBI.Еда">
+       x:Class="Shop_on_xamarin.Pages.StartPage">
 
-    <StackLayout
-        VerticalOptions="FillAndExpand">
-        <Label Text="TISBI.Еда"
-               TextColor="White"
-               VerticalOptions="StartAndExpand"
-               HeightRequest="50"
-               BackgroundColor="Red"
-               FontSize="30"/>
-        <Button
-            BackgroundColor="Red"
-            Text="Забронировать место"
-            VerticalOptions="End">
-        </Button>
+    <StackLayout>
+        <Grid VerticalOptions="CenterAndExpand">
+            <Label Grid.Column="0" Grid.Row="0" Grid.ColumnSpan="14"
+                   Text="TISBI.Еда"
+                   FontSize="40"
+                   TextColor="Black"
+                   HorizontalOptions="Center"
+                   VerticalOptions="Center"/>
+            <Button Grid.Column="4" Grid.Row="1" Grid.ColumnSpan="6"
+                    Text="Забронировать место"
+                    HeightRequest="60"
+                    WidthRequest="100"
+                    TextColor="White"
+                    FontSize="17"
+                    CornerRadius="40"
+                    BackgroundColor="Red"
+                    Clicked="GoToTableReservationPage"/>
+        </Grid>
+        
+        
+        <Grid HeightRequest="100">
+            <BoxView Color="Transparent" Grid.Column="0" Grid.Row="0" Grid.ColumnSpan="100" Grid.RowSpan="100"/>
+            <BoxView Color="Red" Grid.Column="0" Grid.Row="5" Grid.ColumnSpan="100" Grid.RowSpan="13"/>           
+            <Ellipse Fill="White" Grid.Column="27" Grid.Row="0" Grid.ColumnSpan="17" Grid.RowSpan="17"/>
+            <ImageButton Grid.Column="28" Grid.Row="1" Grid.ColumnSpan="15" Grid.RowSpan="15"
+                         Source="startorder.png"
+                         BackgroundColor="Red"                         
+                         CornerRadius="40"
+                         Clicked="GoToOrderList"/>
+        </Grid>
     </StackLayout>
     
     

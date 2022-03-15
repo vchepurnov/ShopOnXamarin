@@ -5,9 +5,27 @@
              Title="TISBI.Еда">
     <ContentPage.Content>
         <StackLayout>
-            <Label Text="Welcome to Xamarin.Forms!"
-                VerticalOptions="CenterAndExpand" 
-                HorizontalOptions="CenterAndExpand" />
+            <Label Text="Заказы"
+                   HorizontalOptions="CenterAndExpand"
+                   VerticalOptions="CenterAndExpand"
+                   FontSize="25"
+                   TextColor="Black"/>
+            <Grid HeightRequest="100">
+                <BoxView Color="Transparent" Grid.Column="0" Grid.Row="0" Grid.ColumnSpan="100" Grid.RowSpan="100"/>
+                <BoxView Color="Red" Grid.Column="0" Grid.Row="5" Grid.ColumnSpan="100" Grid.RowSpan="13"/>
+                <Ellipse Fill="White" Grid.Column="48" Grid.Row="0" Grid.ColumnSpan="17" Grid.RowSpan="17"/>
+                <ImageButton Grid.Column="5" Grid.Row="5" Grid.ColumnSpan="17" Grid.RowSpan="12"
+                         Source="products.png"
+                         BackgroundColor="Red"                         
+                         CornerRadius="100"/>
+                <ImageButton Grid.Column="27" Grid.Row="5" Grid.ColumnSpan="17" Grid.RowSpan="12"
+                         BackgroundColor="Red"
+                         Source="shopingcart.png"/>
+                <ImageButton Grid.Column="49" Grid.Row="1" Grid.ColumnSpan="15" Grid.RowSpan="15"
+                         BackgroundColor="Red"
+                         CornerRadius="100"    
+                         Source="startorder.png"/>
+            </Grid>
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>
