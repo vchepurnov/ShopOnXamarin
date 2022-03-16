@@ -4,6 +4,14 @@
              x:Class="Shop_on_xamarin.Pages.TablePage8">
     <ContentPage.Content>
         <StackLayout>
+            <Grid>
+                <BoxView Grid.Column="0" Grid.Row="0" Grid.ColumnSpan="100" Grid.RowSpan="10"
+                     Color="Red"/>
+                <Label Grid.Column="23" Grid.Row="1" Grid.ColumnSpan="25" Grid.RowSpan="10"
+                   Text="TISBI.Еда"
+                   FontSize="30"
+                   TextColor="White"/>
+            </Grid>
             <Label Text="Стол на 8 мест"
                    HorizontalOptions="Center"
                    FontSize="24"
@@ -11,7 +19,7 @@
             <Frame Padding="1"
                    CornerRadius="10"                   
                    BorderColor="Black">
-                <Grid HeightRequest="400"
+                <Grid HeightRequest="365"
                       Padding="0"
                       Margin="0">
                     <BoxView Color="LightGray" Grid.Column="0" Grid.Row="0" Grid.RowSpan="50" Grid.ColumnSpan="35" />
@@ -33,11 +41,11 @@
             <Button Text="Выбрать место"
                     TextColor="White"
                     CornerRadius="30"
-                    Margin="30"
                     BackgroundColor="Red"
                     HeightRequest="50"
                     WidthRequest="150"
-                    HorizontalOptions="CenterAndExpand"/>
+                    HorizontalOptions="CenterAndExpand"
+                    Clicked="GoToProductPage"/>
             
             <Grid VerticalOptions="EndAndExpand">
                 <BoxView Color="Transparent" Grid.Column="0" Grid.Row="0" Grid.ColumnSpan="100" Grid.RowSpan="10"/>

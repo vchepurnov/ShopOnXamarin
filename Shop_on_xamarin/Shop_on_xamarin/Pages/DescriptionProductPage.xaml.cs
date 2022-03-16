@@ -18,6 +18,7 @@ namespace Shop_on_xamarin.Pages
         {
             var id = Id;
             InitializeComponent();
+            NavigationPage.SetHasNavigationBar(this, false);
             BindingContext = _vm;
             loading(id);
         }
@@ -26,6 +27,10 @@ namespace Shop_on_xamarin.Pages
         {
             var Id = _id;
             await _vm.LoadData(Id);
+        }
+        private void GoToBack(object sender, EventArgs e)
+        {
+            Navigation.PopAsync();
         }
     }
 }

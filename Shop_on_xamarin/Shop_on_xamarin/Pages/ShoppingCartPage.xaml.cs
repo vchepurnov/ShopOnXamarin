@@ -15,6 +15,15 @@ namespace Shop_on_xamarin.Pages
         public ShoppingCartPage()
         {
             InitializeComponent();
+            NavigationPage.SetHasNavigationBar(this, false);
+        }
+        private void GoToProductsPage(object sender, EventArgs e)
+        {
+            Navigation.PushAsync(new ProductsPage());
+        }
+        private void GoToOrderListPage(object sender, EventArgs e)
+        {
+            Navigation.PushAsync(new OrderListPage());
         }
     }
 }

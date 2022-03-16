@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Shop_on_xamarin.ViewModels;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -12,6 +13,7 @@ namespace Shop_on_xamarin.Pages
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class StartPage : ContentPage
     {
+        private readonly ProductListViewModel _vm = new ProductListViewModel();
         public StartPage()
         {
             InitializeComponent();
@@ -25,6 +27,5 @@ namespace Shop_on_xamarin.Pages
         {
             Navigation.PushAsync(new OrderListPage());
         }
-
     }
 }

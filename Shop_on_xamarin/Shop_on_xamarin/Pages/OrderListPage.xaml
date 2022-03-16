@@ -5,6 +5,14 @@
              Title="TISBI.Еда">
     <ContentPage.Content>
         <StackLayout>
+            <Grid>
+                <BoxView Grid.Column="0" Grid.Row="0" Grid.ColumnSpan="100" Grid.RowSpan="10"
+                     Color="Red"/>
+                <Label Grid.Column="23" Grid.Row="1" Grid.ColumnSpan="25" Grid.RowSpan="10"
+                   Text="TISBI.Еда"
+                   FontSize="30"
+                   TextColor="White"/>
+            </Grid>
             <Label Text="Заказы"
                    HorizontalOptions="CenterAndExpand"
                    VerticalOptions="CenterAndExpand"
@@ -15,16 +23,18 @@
                 <BoxView Color="Red" Grid.Column="0" Grid.Row="5" Grid.ColumnSpan="100" Grid.RowSpan="13"/>
                 <Ellipse Fill="White" Grid.Column="48" Grid.Row="0" Grid.ColumnSpan="17" Grid.RowSpan="17"/>
                 <ImageButton Grid.Column="5" Grid.Row="5" Grid.ColumnSpan="17" Grid.RowSpan="12"
-                         Source="products.png"
-                         BackgroundColor="Red"                         
-                         CornerRadius="100"/>
+                             Source="products.png"
+                             BackgroundColor="Red"                         
+                             CornerRadius="100"
+                             Clicked="GoToProductsPage"/>
                 <ImageButton Grid.Column="27" Grid.Row="5" Grid.ColumnSpan="17" Grid.RowSpan="12"
-                         BackgroundColor="Red"
-                         Source="shopingcart.png"/>
+                             BackgroundColor="Red"
+                             Source="shopingcart.png"
+                             Clicked="GoToShopingCart"/>
                 <ImageButton Grid.Column="49" Grid.Row="1" Grid.ColumnSpan="15" Grid.RowSpan="15"
-                         BackgroundColor="Red"
-                         CornerRadius="100"    
-                         Source="startorder.png"/>
+                             BackgroundColor="Red"
+                             CornerRadius="100"    
+                             Source="startorder.png"/>
             </Grid>
         </StackLayout>
     </ContentPage.Content>

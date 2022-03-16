@@ -19,6 +19,7 @@ namespace Shop_on_xamarin.Pages
         public ProductsPage()
         {
             InitializeComponent();
+            NavigationPage.SetHasNavigationBar(this, false);
             BindingContext = _vm;         
             loading();
         }

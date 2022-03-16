@@ -7,6 +7,14 @@
 
     
     <StackLayout>
+        <Grid>
+            <BoxView Grid.Column="0" Grid.Row="0" Grid.ColumnSpan="100" Grid.RowSpan="10"
+                     Color="Red"/>
+            <Label Grid.Column="23" Grid.Row="1" Grid.ColumnSpan="25" Grid.RowSpan="10"
+                   Text="TISBI.Еда"
+                   FontSize="30"
+                   TextColor="White"/>
+        </Grid>
         <ListView ItemsSource="{Binding product}"
               HasUnevenRows="True"
               SeparatorColor="Red"
@@ -20,7 +28,8 @@
                         <Frame CornerRadius="20"
                                HasShadow="True">
                             <StackLayout>
-                                <Image Source="{Binding MainPhoto}"/>
+                                <Image Source="{Binding MainPhoto}"
+                                       HeightRequest="300"/>
                                 <StackLayout VerticalOptions="Center">
                                     <Grid>
                                         <Label Grid.Row="0" Grid.Column="0"

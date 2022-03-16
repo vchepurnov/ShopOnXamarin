@@ -25,7 +25,7 @@ namespace Shop_on_xamarin.Pages
 
         private void GoToTablePage(object sender, EventArgs e)
         {
-            Navigation.PushAsync(new TablePage4());
+            Navigation.PushAsync(new TablePage8());
         }
     }
 }

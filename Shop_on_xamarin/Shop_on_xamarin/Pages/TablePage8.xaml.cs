@@ -22,5 +22,9 @@ namespace Shop_on_xamarin.Pages
         {
             Navigation.PopAsync();
         }
+        private void GoToProductPage(object sender, EventArgs e)
+        {
+            Navigation.PushAsync(new ProductsPage());
+        }
     }
 }

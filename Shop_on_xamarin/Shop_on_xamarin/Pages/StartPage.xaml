@@ -4,6 +4,14 @@
        x:Class="Shop_on_xamarin.Pages.StartPage">
 
     <StackLayout>
+        <Grid>
+            <BoxView Grid.Column="0" Grid.Row="0" Grid.ColumnSpan="100" Grid.RowSpan="10"
+                     Color="Red"/>
+            <Label Grid.Column="23" Grid.Row="1" Grid.ColumnSpan="25" Grid.RowSpan="10"
+                   Text="TISBI.Еда"
+                   FontSize="30"
+                   TextColor="White"/>
+        </Grid>
         <Grid VerticalOptions="CenterAndExpand">
             <Label Grid.Column="0" Grid.Row="0" Grid.ColumnSpan="14"
                    Text="TISBI.Еда"

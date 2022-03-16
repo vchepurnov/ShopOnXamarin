@@ -21,6 +21,7 @@ namespace Shop_on_xamarin.ViewModels
         private string name;
         private string mainphoto;
         private int price;
+        private string description;
         public ICommand loadingDescription => new Command(async value => { await LoadData(Id); });
 
         private ObservableCollection<Product> _product;
@@ -61,6 +62,15 @@ namespace Shop_on_xamarin.ViewModels
                 OnPropertyChanged("Price");
             }
         }
+        public string Description
+        {
+            get { return description; }
+            private set
+            {
+                description = value;
+                OnPropertyChanged("Description");
+            }
+        }
 
         public async Task LoadData(int Id)
         {
@@ -82,6 +92,7 @@ namespace Shop_on_xamarin.ViewModels
                 this.Name = product.Name;
                 this.MainPhoto = product.MainPhoto;
                 this.Price = product.Price;
+                this.Description = product.Description;
 
             }
             catch (Exception ex)

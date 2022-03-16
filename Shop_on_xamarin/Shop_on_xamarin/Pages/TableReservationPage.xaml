@@ -5,14 +5,22 @@
              Title="TISBI.Еда">
     <ContentPage.Content>
         <StackLayout>
+            <Grid>
+                <BoxView Grid.Column="0" Grid.Row="0" Grid.ColumnSpan="100" Grid.RowSpan="10"
+                     Color="Red"/>
+                <Label Grid.Column="23" Grid.Row="1" Grid.ColumnSpan="25" Grid.RowSpan="10"
+                   Text="TISBI.Еда"
+                   FontSize="30"
+                   TextColor="White"/>
+            </Grid>
             <Label Text="Выберите стол" 
                    TextColor="Black"
-                   HorizontalOptions="CenterAndExpand"
-                   FontSize="24"/>
+                   HorizontalOptions="Center"
+                   FontSize="20"/>
             <Frame Padding="1"
                    CornerRadius="10"                   
                    BorderColor="Black">
-                <Grid HeightRequest="400"
+                <Grid HeightRequest="380"
                       Padding="0"
                       Margin="0">
                     <BoxView Color="LightGray" Grid.Column="0" Grid.Row="0" Grid.RowSpan="50" Grid.ColumnSpan="35" />
@@ -52,7 +60,6 @@
             </Frame>
             
             <Button Text="Выбрать стол"
-                    Margin="20"
                     TextColor="White"
                     CornerRadius="20"
                     BackgroundColor="Red"

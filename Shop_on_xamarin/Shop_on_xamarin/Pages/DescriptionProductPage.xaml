@@ -6,6 +6,14 @@
     <ContentPage.Content>
         <StackLayout>
             <Grid>
+                <BoxView Grid.Column="0" Grid.Row="0" Grid.ColumnSpan="100" Grid.RowSpan="10"
+                     Color="Red"/>
+                <Label Grid.Column="23" Grid.Row="1" Grid.ColumnSpan="25" Grid.RowSpan="10"
+                   Text="TISBI.Еда"
+                   FontSize="30"
+                   TextColor="White"/>
+            </Grid>
+            <Grid>
                 <Frame CornerRadius="20"
                        Padding="3">
                     <StackLayout>
@@ -34,7 +42,7 @@
                 </Frame>
                 
             </Grid>
-            <Label Text="Описание размером ляляляллял яляляллялялялялялялялялял ялялялляяя яяяяяяяяяяяя яяяяяяяяяяя яяяяяяяяяяяяяяяя яяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяя"
+            <Label Text="{Binding Description}"
                    TextColor="Black"
                    FontSize="20"
                    HorizontalOptions="CenterAndExpand"
@@ -48,6 +56,16 @@
                     Margin="10"
                     HorizontalOptions="CenterAndExpand"
                     />
+            <Grid VerticalOptions="End" Margin="0, 28, 0, 0">
+                <BoxView Color="Transparent" Grid.Column="0" Grid.Row="0" Grid.ColumnSpan="100" Grid.RowSpan="10"/>
+                <BoxView Color="Red" Grid.Column="0" Grid.Row="5" Grid.ColumnSpan="100" Grid.RowSpan="13"/>
+                <Ellipse Fill="White" Grid.Column="27" Grid.Row="0" Grid.ColumnSpan="17" Grid.RowSpan="17"/>
+                <ImageButton Grid.Column="28" Grid.Row="1" Grid.ColumnSpan="15" Grid.RowSpan="15"
+                         Source="gotoback.png"
+                         BackgroundColor="Red"                         
+                         CornerRadius="40"
+                         Clicked="GoToBack"/>
+            </Grid>
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>
