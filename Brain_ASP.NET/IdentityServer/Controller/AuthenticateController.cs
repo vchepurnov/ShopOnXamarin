@@ -144,7 +144,10 @@ namespace Identity_Server.Controller
         [HttpGet]
         public async Task<string> CheckLogin()
         {
-            return HttpContext.User.FindFirst(ClaimTypes.NameIdentifier).Value;
+            ClaimsPrincipal claimsPrincipal = HttpContext.User as ClaimsPrincipal;
+            return _userManager.GetUserId(claimsPrincipal);
+            //return claimsPrincipal.Identity.Name;
+            //return HttpContext.User.FindFirst(ClaimTypes.NameIdentifier).Value;
         }
         
         [HttpPost]

@@ -1,15 +1,11 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore;
 using Models;
 using Models.Identity;
-using System;
-using System.Collections.Generic;
-using System.Collections.ObjectModel;
-using System.Linq;
-using System.Threading.Tasks;
 
 namespace TusbifoodMicroservice.Context
 {
-    public partial class TusbiFoodContext: DbContext
+    public partial class TusbiFoodContext: IdentityDbContext<AspNetUser>
     {
         public TusbiFoodContext(DbContextOptions<TusbiFoodContext> options) : base(options)
         {
@@ -46,23 +42,6 @@ namespace TusbifoodMicroservice.Context
                 entity.HasOne(d => d.Products)
                     .WithMany(p => p.OrderProducts)
                     .HasForeignKey(d => d.ProductsId);
-            });
-
-            builder.Entity<OrderSeat>(entity =>
-            {
-                entity.HasKey(e => new { e.OrdersId, e.SeatsId });
-
-                entity.ToTable("OrderSeat");
-
-                entity.HasIndex(e => e.SeatsId, "IX_OrderSeat_SeatsId");
-
-                entity.HasOne(d => d.Orders)
-                    .WithMany(p => p.OrderSeats)
-                    .HasForeignKey(d => d.OrdersId);
-
-                entity.HasOne(d => d.Seats)
-                    .WithMany(p => p.OrderSeats)
-                    .HasForeignKey(d => d.SeatsId);
             });
 
             builder.Entity<Product>(entity =>
@@ -102,6 +81,10 @@ namespace TusbifoodMicroservice.Context
                 entity.HasOne(d => d.ShoppingCart)
                     .WithMany(p => p.Seats)
                     .HasForeignKey(d => d.ShoppingCartId);
+
+                entity.HasOne(a => a.Order)
+                    .WithMany(p => p.Seats)
+                    .HasForeignKey(d => d.OrderId);
             });
 
             builder.Entity<TypeProduct>(entity =>
@@ -150,11 +133,10 @@ namespace TusbifoodMicroservice.Context
                     .HasForeignKey(a => a.CategoryId);
             });
 
-            OnModelCreatingPartial(builder);
+            base.OnModelCreating(builder);
 
         }
 
-        partial void OnModelCreatingPartial(ModelBuilder builder);
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
@@ -163,7 +145,6 @@ namespace TusbifoodMicroservice.Context
         public virtual DbSet<AspNetUser> AspNetUsers { get; set; }
         public virtual DbSet<Order> Orders { get; set; }
         public virtual DbSet<OrderProduct> OrderProducts { get; set; }
-        public virtual DbSet<OrderSeat> OrderSeats { get; set; }
         public virtual DbSet<Product> Products { get; set; }
         public virtual DbSet<ProductShoppingCart> ProductShoppingCarts { get; set; }
         public virtual DbSet<Seat> Seats { get; set; }

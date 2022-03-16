@@ -1,11 +1,14 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security.Claims;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Models;
+using Models.Identity;
 using TusbifoodMicroservice.Context;
 
 namespace TusbifoodMicroservice.Controllers
@@ -15,10 +18,12 @@ namespace TusbifoodMicroservice.Controllers
     public class ShoppingCartsController : ControllerBase
     {
         private readonly TusbiFoodContext _context;
+        private readonly UserManager<AspNetUser> _userManager;
 
-        public ShoppingCartsController(TusbiFoodContext context)
+        public ShoppingCartsController(TusbiFoodContext context, UserManager<AspNetUser> userManager)
         {
             _context = context;
+            _userManager = userManager;
         }
 
         /// <summary>
@@ -102,6 +107,38 @@ namespace TusbifoodMicroservice.Controllers
         {
             var productShoppingCart = await _context.ProductShoppingCarts.Where(e => e.ShoppingCartsId == cartId).Select(p => p.ProductsId).ToListAsync();
             return await _context.Products.Where(e => productShoppingCart.Contains(e.Id)).ToListAsync();
+        }
+
+        [HttpPut]
+        [Route("CartToOrder")]
+        public async Task CartToOrder()
+        {
+            ClaimsPrincipal claimsPrincipal = HttpContext.User as ClaimsPrincipal;
+            string UserId = _userManager.GetUserId(claimsPrincipal);
+            Order order = new Order();
+            UserProfile userProfile = _context.UserProfiles.Include(a => a.ShoppingCart).FirstOrDefault<UserProfile>(e => e.AspNetUserId == UserId);
+            try
+            {
+                _context.Orders.Add(new Order() { UserProfileId = userProfile.Id, Status = OrderStatus.Неоплачен });
+                await _context.SaveChangesAsync();
+                order = _context.Orders.FirstOrDefault(a => a.UserProfileId == userProfile.Id || a.Status == OrderStatus.Неоплачен);
+                foreach (var a in _context.ProductShoppingCarts.Where(f => f.ShoppingCartsId == userProfile.ShoppingCart.Id).ToList())
+                {
+                    _context.OrderProducts.Add(new OrderProduct() { OrdersId = order.Id, ProductsId = a.ProductsId });
+                }
+                Seat seat = _context.Seats.FirstOrDefault(a => a.ShoppingCartId == userProfile.ShoppingCart.Id);
+                if(seat != null)
+                    order.Seats.Add(seat);
+
+
+                await _context.SaveChangesAsync();
+            }
+            catch (Exception ex)
+            {
+                if (order.Seats.Count < 1)
+                    Conflict("Выбереите место");
+                throw;
+            }
         }
         private bool ProductShoppingCartExists(int id)
         {
