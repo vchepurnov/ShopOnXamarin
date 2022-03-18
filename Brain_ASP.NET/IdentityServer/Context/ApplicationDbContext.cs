@@ -85,6 +85,50 @@ namespace Identity_Server.Context
                 entity.HasOne(a => a.Order)
                     .WithMany(p => p.Seats)
                     .HasForeignKey(d => d.OrderId);
+
+                entity.HasOne(d => d.Table)
+                    .WithMany(p => p.Seats)
+                    .HasForeignKey(a => a.TableId);
+
+                entity.HasData(new Seat[]
+                {
+                    new Seat(){Id = 1, TableId = 1},
+                    new Seat(){Id = 2, TableId = 1},
+                    new Seat(){Id = 3, TableId = 1},
+                    new Seat(){Id = 4, TableId = 1},
+                    new Seat(){Id = 5, TableId = 2},
+                    new Seat(){Id = 6, TableId = 2},
+                    new Seat(){Id = 7, TableId = 2},
+                    new Seat(){Id = 8, TableId = 2},
+                    new Seat(){Id = 9, TableId = 3},
+                    new Seat(){Id = 10, TableId = 3},
+                    new Seat(){Id = 11, TableId = 3},
+                    new Seat(){Id = 12, TableId = 3},
+                    new Seat(){Id = 13, TableId = 4},
+                    new Seat(){Id = 14, TableId = 4},
+                    new Seat(){Id = 15, TableId = 4},
+                    new Seat(){Id = 16, TableId = 4},
+                    new Seat(){Id = 17, TableId = 5},
+                    new Seat(){Id = 18, TableId = 5},
+                    new Seat(){Id = 19, TableId = 5},
+                    new Seat(){Id = 21, TableId = 5},
+                    new Seat(){Id = 22, TableId = 6},
+                    new Seat(){Id = 23, TableId = 6},
+                    new Seat(){Id = 24, TableId = 6},
+                    new Seat(){Id = 25, TableId = 6},
+                    new Seat(){Id = 26, TableId = 7},
+                    new Seat(){Id = 27, TableId = 7},
+                    new Seat(){Id = 28, TableId = 7},
+                    new Seat(){Id = 29, TableId = 7},
+                    new Seat(){Id = 31, TableId = 8},
+                    new Seat(){Id = 32, TableId = 8},
+                    new Seat(){Id = 33, TableId = 8},
+                    new Seat(){Id = 34, TableId = 8},
+                    new Seat(){Id = 35, TableId = 8},
+                    new Seat(){Id = 36, TableId = 8},
+                    new Seat(){Id = 37, TableId = 8},
+                    new Seat(){Id = 38, TableId = 8}
+                });
             });
 
             builder.Entity<TypeProduct>(entity =>
@@ -133,7 +177,21 @@ namespace Identity_Server.Context
                     .HasForeignKey(a => a.CategoryId);
             });
             base.OnModelCreating(builder);
-            
+
+            builder.Entity<Table>(entity =>
+            {
+                entity.HasData(new Table[]
+                {
+                    new Table(){Id = 1 },
+                    new Table(){Id = 2 },
+                    new Table(){Id = 3 },
+                    new Table(){Id = 4 },
+                    new Table(){Id = 5 },
+                    new Table(){Id = 6 },
+                    new Table(){Id = 7 },
+                    new Table(){Id = 8 }
+                });
+            });
         }
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {

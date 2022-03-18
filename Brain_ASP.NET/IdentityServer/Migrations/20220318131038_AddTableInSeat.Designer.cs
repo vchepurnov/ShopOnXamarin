@@ -3,15 +3,17 @@ using System;
 using Identity_Server.Context;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 
 namespace Identity_Server.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20220318131038_AddTableInSeat")]
+    partial class AddTableInSeat
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -353,188 +355,6 @@ namespace Identity_Server.Migrations
                     b.HasIndex(new[] { "ShoppingCartId" }, "IX_Seat_ShoppingCartId");
 
                     b.ToTable("Seat");
-
-                    b.HasData(
-                        new
-                        {
-                            Id = 1,
-                            TableId = 1
-                        },
-                        new
-                        {
-                            Id = 2,
-                            TableId = 1
-                        },
-                        new
-                        {
-                            Id = 3,
-                            TableId = 1
-                        },
-                        new
-                        {
-                            Id = 4,
-                            TableId = 1
-                        },
-                        new
-                        {
-                            Id = 5,
-                            TableId = 2
-                        },
-                        new
-                        {
-                            Id = 6,
-                            TableId = 2
-                        },
-                        new
-                        {
-                            Id = 7,
-                            TableId = 2
-                        },
-                        new
-                        {
-                            Id = 8,
-                            TableId = 2
-                        },
-                        new
-                        {
-                            Id = 9,
-                            TableId = 3
-                        },
-                        new
-                        {
-                            Id = 10,
-                            TableId = 3
-                        },
-                        new
-                        {
-                            Id = 11,
-                            TableId = 3
-                        },
-                        new
-                        {
-                            Id = 12,
-                            TableId = 3
-                        },
-                        new
-                        {
-                            Id = 13,
-                            TableId = 4
-                        },
-                        new
-                        {
-                            Id = 14,
-                            TableId = 4
-                        },
-                        new
-                        {
-                            Id = 15,
-                            TableId = 4
-                        },
-                        new
-                        {
-                            Id = 16,
-                            TableId = 4
-                        },
-                        new
-                        {
-                            Id = 17,
-                            TableId = 5
-                        },
-                        new
-                        {
-                            Id = 18,
-                            TableId = 5
-                        },
-                        new
-                        {
-                            Id = 19,
-                            TableId = 5
-                        },
-                        new
-                        {
-                            Id = 21,
-                            TableId = 5
-                        },
-                        new
-                        {
-                            Id = 22,
-                            TableId = 6
-                        },
-                        new
-                        {
-                            Id = 23,
-                            TableId = 6
-                        },
-                        new
-                        {
-                            Id = 24,
-                            TableId = 6
-                        },
-                        new
-                        {
-                            Id = 25,
-                            TableId = 6
-                        },
-                        new
-                        {
-                            Id = 26,
-                            TableId = 7
-                        },
-                        new
-                        {
-                            Id = 27,
-                            TableId = 7
-                        },
-                        new
-                        {
-                            Id = 28,
-                            TableId = 7
-                        },
-                        new
-                        {
-                            Id = 29,
-                            TableId = 7
-                        },
-                        new
-                        {
-                            Id = 31,
-                            TableId = 8
-                        },
-                        new
-                        {
-                            Id = 32,
-                            TableId = 8
-                        },
-                        new
-                        {
-                            Id = 33,
-                            TableId = 8
-                        },
-                        new
-                        {
-                            Id = 34,
-                            TableId = 8
-                        },
-                        new
-                        {
-                            Id = 35,
-                            TableId = 8
-                        },
-                        new
-                        {
-                            Id = 36,
-                            TableId = 8
-                        },
-                        new
-                        {
-                            Id = 37,
-                            TableId = 8
-                        },
-                        new
-                        {
-                            Id = 38,
-                            TableId = 8
-                        });
                 });
 
             modelBuilder.Entity("Models.ShoppingCart", b =>
@@ -565,40 +385,6 @@ namespace Identity_Server.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Table");
-
-                    b.HasData(
-                        new
-                        {
-                            Id = 1
-                        },
-                        new
-                        {
-                            Id = 2
-                        },
-                        new
-                        {
-                            Id = 3
-                        },
-                        new
-                        {
-                            Id = 4
-                        },
-                        new
-                        {
-                            Id = 5
-                        },
-                        new
-                        {
-                            Id = 6
-                        },
-                        new
-                        {
-                            Id = 7
-                        },
-                        new
-                        {
-                            Id = 8
-                        });
                 });
 
             modelBuilder.Entity("Models.TypeProduct", b =>

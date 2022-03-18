@@ -16,6 +16,7 @@ namespace Models
         /// </summary>
         [NotMapped]
         public bool IsBusy { get => Order == null; }
+        public Table Table { get; set; }
         public int TableId { get; set; }
         public int? ShoppingCartId { get; set; }
 
